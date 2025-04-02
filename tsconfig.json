@@ -5,6 +5,12 @@
     "paths": {
       "@/*": [
         "./*"
+      ],
+      "@colors": [
+        "./components/ui/colors.ts"
+      ],
+      "@theme": [
+        "./components/ui/theme.ts"
       ]
     }
   },

@@ -1,0 +1,19 @@
+{
+  "login": "Iniciar sesión",
+  "signup": "Registrate",
+  "signup_subtitle": "No tienes una cuenta?",
+  "forms": {
+    "separator_label": "o",
+    "login": {
+      "title": "Hola de nuevo!",
+      "field_email": "Correo electrónico",
+      "field_password": "Contraseña",
+      "button": "Ingresar"
+    },
+    "signup": {
+      "title": "Crea una Cuenta",
+      "network_button_label": "Continua con",
+      "email_button_label": "Ingresa con Correo"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "login": "Log In",
+  "signup": "Sign up",
+  "signup_subtitle": "Don't have an account?",
+  "forms": {
+    "separator_label": "or",
+    "login": {
+      "title": "Welcome back!",
+      "field_email": "Email",
+      "field_password": "Password",
+      "button": "Join"
+    },
+    "signup": {
+      "title": "Create an Account",
+      "network_button_label": "Continue with",
+      "email_button_label": "Sign Up with Email"
+    }
+  }
+}
