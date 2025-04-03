@@ -88,16 +88,7 @@ export default function LoginPage() {
           snapPoints={snapPoints}
           backdropComponent={(props) => renderBackdrop(props, handleCloseLogin)}
         >
-          <BottomSheetView
-            style={{
-              flexGrow: 1,
-              alignItems: 'center',
-              justifyContent: 'space-around',
-              padding: theme.spacing(5),
-              gap: theme.spacing(4),
-              paddingVertical: theme.spacing(6),
-            }}
-          >
+          <BottomSheetView style={styles.modalContent}>
             <View style={{ alignItems: 'center' }}>
               <Character1BubbleSvg height={180} width={180} />
               <Text style={styles.formTitle}>
@@ -146,16 +137,7 @@ export default function LoginPage() {
             renderBackdrop(props, handleClosenSignup)
           }
         >
-          <BottomSheetView
-            style={{
-              flexGrow: 1,
-              alignItems: 'center',
-              justifyContent: 'space-around',
-              padding: theme.spacing(5),
-              gap: theme.spacing(4),
-              paddingVertical: theme.spacing(6),
-            }}
-          >
+          <BottomSheetView style={styles.modalContent}>
             <View style={{ alignItems: 'center' }}>
               <Character2BubbleSvg height={180} width={180} />
               <Text

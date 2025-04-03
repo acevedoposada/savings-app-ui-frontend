@@ -25,4 +25,12 @@ export const styles = StyleSheet.create({
     fontFamily: theme.typography.title,
     fontSize: theme.spacing(10),
   },
+  modalContent: {
+    flexGrow: 1,
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    padding: theme.spacing(5),
+    gap: theme.spacing(4),
+    paddingVertical: theme.spacing(6),
+  },
 });
