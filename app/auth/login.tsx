@@ -11,6 +11,8 @@ import {
 } from '@gorhom/bottom-sheet';
 
 import Character1BubbleSvg from '@/assets/images/svgs/character-1-bubble';
+import Character2BubbleSvg from '@/assets/images/svgs/character-2-bubble';
+
 import BackdropBlur from '@/components/ui/BackdropBlur';
 import SocialButton from '@/components/SocialButton';
 import FormField from '@/components/FormField';
@@ -19,7 +21,6 @@ import Button from '@/components/Button';
 import theme from '@theme';
 
 import { styles } from '@/styles/login.styles';
-import Character2BubbleSvg from '@/assets/images/svgs/character-2-bubble';
 
 export default function LoginPage() {
   const loginSheetRef = useRef<BottomSheetModal>(null);
@@ -76,7 +77,6 @@ export default function LoginPage() {
           <Button color='secondary' onPress={handleOpenLogin}>
             {t('login:login')}
           </Button>
-
           <Button color='secondary' variant='link' onPress={handleOpenSignup}>
             {t('login:signup_subtitle')}{' '}
             <Text style={{ fontWeight: 'bold' }}>{t('login:signup')}</Text>

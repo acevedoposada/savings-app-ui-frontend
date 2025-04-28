@@ -1,8 +1,9 @@
 import { Pressable, PressableProps, TextStyle, ViewStyle } from 'react-native';
 import { ReactElement, ReactNode } from 'react';
+import { StyleProp } from 'react-native';
+
 import { ThemedText } from './ThemedText';
 import { COLORS } from './ui/colors';
-import { StyleProp } from 'react-native';
 
 enum ButtonVariants {
   CONTAINED = 'contained',
@@ -27,6 +28,8 @@ export interface ButtonProps extends Omit<PressableProps, 'style'> {
   };
 }
 
+const TRANSPARENT_COLOR = 'transparent';
+
 const Button = ({
   children,
   variant = ButtonVariants.CONTAINED,
@@ -46,13 +49,13 @@ const Button = ({
       borderColor:
         variant === ButtonVariants.OUTLINED
           ? COLORS[color].main
-          : 'transparent',
+          : TRANSPARENT_COLOR,
       backgroundColor:
         variant === ButtonVariants.CONTAINED
           ? pressed
             ? COLORS[color][900]
             : COLORS[color].main
-          : 'transparent',
+          : TRANSPARENT_COLOR,
       opacity: pressed ? 0.9 : 1,
     };
     return { ...baseStyle, ...componentStyles?.root };

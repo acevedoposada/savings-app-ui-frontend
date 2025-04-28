@@ -17,7 +17,6 @@ i18n.use(initReactI18next).init({
   fallbackLng: 'en',
   ns: ['common', 'login'],
   defaultNS: 'common',
-  // debug: true,
   interpolation: {
     escapeValue: false,
   },
