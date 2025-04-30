@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "691421457739",
+    "project_id": "saving-app-57c09",
+    "storage_bucket": "saving-app-57c09.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:691421457739:android:849dc53083f6a2a5c20cce",
+        "android_client_info": {
+          "package_name": "com.davidacposada.savingsappui"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "691421457739-9j24nlmuf8ckdj963m8tv4oundhdj8uc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9dt9-JN6hVoHiMuzLeNUBuAt_3JxD9XI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "691421457739-9j24nlmuf8ckdj963m8tv4oundhdj8uc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "691421457739-lgrs1fqe2l5dp9inib5qca7rna210cl3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.davidacposada.savingsappui"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

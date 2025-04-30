@@ -31,6 +31,12 @@
           <string>com.davidacposada.savingsappui</string>
         </array>
       </dict>
+      <dict>
+        <key>CFBundleURLSchemes</key>
+        <array>
+          <string>com.googleusercontent.apps.691421457739-lgrs1fqe2l5dp9inib5qca7rna210cl3</string>
+        </array>
+      </dict>
     </array>
     <key>CFBundleVersion</key>
     <string>1</string>
