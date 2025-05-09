@@ -1,6 +1,5 @@
 import { Pressable, PressableProps, TextStyle, ViewStyle } from 'react-native';
 import { ReactElement, ReactNode } from 'react';
-import { StyleProp } from 'react-native';
 
 import { ThemedText } from './ThemedText';
 import { COLORS } from './ui/colors';
@@ -17,14 +16,20 @@ enum ButtonColors {
   TERTIARY = 'tertiary',
 }
 
+enum ContentType {
+  TEXT = 'text',
+  CONTENT = 'content',
+}
+
 export interface ButtonProps extends Omit<PressableProps, 'style'> {
-  children?: ReactElement | ReactNode;
+  children?: string | ReactElement | ReactNode;
   variant?: `${ButtonVariants}`;
   color?: `${ButtonColors}`;
   onPress?: () => void;
+  contentType?: `${ContentType}`;
   styles?: {
     root?: ViewStyle;
-    label?: StyleProp<TextStyle>;
+    label?: TextStyle;
   };
 }
 
@@ -34,6 +39,7 @@ const Button = ({
   children,
   variant = ButtonVariants.CONTAINED,
   color = ButtonColors.PRIMARY,
+  contentType = ContentType.CONTENT,
   onPress,
   styles: componentStyles,
   ...props
@@ -79,9 +85,13 @@ const Button = ({
       onPress={onPress}
       {...props}
     >
-      <ThemedText style={[getTextStyle(), componentStyles?.label]}>
-        {children}
-      </ThemedText>
+      {typeof children === 'string' || contentType === ContentType.TEXT ? (
+        <ThemedText style={[getTextStyle(), componentStyles?.label]}>
+          {children}
+        </ThemedText>
+      ) : (
+        children
+      )}
     </Pressable>
   );
 };

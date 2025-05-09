@@ -1,3 +1,6 @@
 {
-  "appname": "Summa"
+  "appname": "Summa",
+  "labels": {
+    "continue_with": "Continua con {{social}}"
+  }
 }

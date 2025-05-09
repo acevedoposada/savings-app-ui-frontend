@@ -2,7 +2,7 @@ import { Image, Text, View, useWindowDimensions } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
-import { useCallback, useMemo, useRef } from 'react';
+import { useCallback } from 'react';
 import {
   BottomSheetBackdropProps,
   BottomSheetModalProvider,
@@ -21,44 +21,24 @@ import Button from '@/components/Button';
 import theme from '@theme';
 
 import { styles } from '@/styles/login.styles';
+import { useLogin } from '@/hooks/pages/login.hook';
 
 export default function LoginPage() {
-  const loginSheetRef = useRef<BottomSheetModal>(null);
-  const signupSheetRef = useRef<BottomSheetModal>(null);
+  const {
+    loginSheetRef,
+    signupSheetRef,
+    snapPoints,
+    handleToggleBottomSheet,
+    handleSignUp,
+  } = useLogin();
 
   const { width: windowWidth } = useWindowDimensions();
   const { t } = useTranslation();
-  const snapPoints = useMemo(() => ['90%'], []);
-
-  const handleOpenLogin = () => {
-    loginSheetRef.current?.present();
-  };
-
-  const handleCloseLogin = () => {
-    loginSheetRef.current?.dismiss();
-  };
-
-  const handleOpenSignup = () => {
-    signupSheetRef.current?.present();
-  };
-
-  const handleClosenSignup = () => {
-    signupSheetRef.current?.dismiss();
-  };
-
-  const handleSignUp = () => {
-    handleCloseLogin();
-    const timeout = setTimeout(() => {
-      handleOpenSignup();
-      clearTimeout(timeout);
-    }, 300);
-  };
 
   const renderBackdrop = useCallback(
-    (props: BottomSheetBackdropProps, closeFunction: () => void) => (
-      <BackdropBlur {...props} onPress={closeFunction} tint='dark' />
-    ),
-    [handleCloseLogin]
+    (closeFunction: () => void) => (props: BottomSheetBackdropProps) =>
+      <BackdropBlur {...props} onPress={closeFunction} tint='dark' />,
+    [handleToggleBottomSheet]
   );
 
   return (
@@ -74,10 +54,18 @@ export default function LoginPage() {
           />
         </View>
         <View style={styles.content}>
-          <Button color='secondary' onPress={handleOpenLogin}>
+          <Button
+            color='secondary'
+            onPress={handleToggleBottomSheet(loginSheetRef, 'present')}
+          >
             {t('login:login')}
           </Button>
-          <Button color='secondary' variant='link' onPress={handleOpenSignup}>
+          <Button
+            color='secondary'
+            variant='link'
+            onPress={handleToggleBottomSheet(signupSheetRef, 'present')}
+            contentType='text'
+          >
             {t('login:signup_subtitle')}{' '}
             <Text style={{ fontWeight: 'bold' }}>{t('login:signup')}</Text>
           </Button>
@@ -86,7 +74,9 @@ export default function LoginPage() {
           ref={loginSheetRef}
           index={1}
           snapPoints={snapPoints}
-          backdropComponent={(props) => renderBackdrop(props, handleCloseLogin)}
+          backdropComponent={renderBackdrop(
+            handleToggleBottomSheet(loginSheetRef, 'dismiss')
+          )}
         >
           <BottomSheetView style={styles.modalContent}>
             <View style={{ alignItems: 'center' }}>
@@ -118,6 +108,7 @@ export default function LoginPage() {
                 variant='link'
                 styles={{ label: { color: theme.colors.grey[700] } }}
                 onPress={handleSignUp}
+                contentType='text'
               >
                 {t('login:signup_subtitle')}{' '}
                 <Text
@@ -133,9 +124,9 @@ export default function LoginPage() {
           ref={signupSheetRef}
           index={1}
           snapPoints={snapPoints}
-          backdropComponent={(props) =>
-            renderBackdrop(props, handleClosenSignup)
-          }
+          backdropComponent={renderBackdrop(
+            handleToggleBottomSheet(signupSheetRef, 'dismiss')
+          )}
         >
           <BottomSheetView style={styles.modalContent}>
             <View style={{ alignItems: 'center' }}>
@@ -152,6 +143,9 @@ export default function LoginPage() {
               >
                 {t('login:forms.signup.title')}
               </Text>
+              <SocialButton socialNetwork='facebook' type='title' />
+              <SocialButton socialNetwork='google' type='title' />
+              <SocialButton socialNetwork='apple' type='title' />
             </View>
           </BottomSheetView>
         </BottomSheetModal>
